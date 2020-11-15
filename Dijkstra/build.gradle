@@ -1,10 +1,12 @@
 
+// application plugin: https://docs.gradle.org/current/userguide/application_plugin.html
+
 plugins {
-    id 'java'
+    id 'application'
 }
 
 group 'org.example'
-version '1.0-SNAPSHOT'
+version 'mysteriousBuild_0.1'
 
 //defaultTasks 'run'
 
@@ -16,11 +18,12 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
- {
-    mainClass = 'Main'
+application {
+    mainClassName = project.hasProperty("mainClass") ? getProperty("mainClass") : "Main"
 }
-//
+
 //task run {
+////    mainClassName = 'Main'
 //    doLast
 //            {
 //                println 'Hey!!!!'
